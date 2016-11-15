@@ -1,0 +1,88 @@
+<openerp>
+  <data>
+
+
+    <record model="ir.ui.view" id="escolares.lista_alumnos_form">
+      <field name="name">escolares.alumno.form</field>
+      <field name="model">escolares.alumno</field>
+      <field name="arch" type="xml">
+        <form string="Listado de Alumnos">
+        <sheet>
+          <div class="oe_title">
+            <label for="name" class="oe_edit_only" string="Matricula">Matricula</label>
+            <h1><field name="matricula"/></h1>
+          </div>
+          <separator string="Informacion" colspan="2" />
+          <group colspan="2" col="2">
+            <field name="apellidoPaterno"/>
+            <field name="apellidoMaterno"/>
+            <field name="name"/>
+            <field name="edad"/>
+            <field name="carrera_id"/>
+          </group>
+          
+        </sheet>
+        </form>
+      </field>
+    </record>
+    <!-- explicit list view definition -->
+    
+    <record model="ir.ui.view" id="escolares.lista_alumnos_tree">
+      <field name="name">escolares.alumno.tree</field>
+      <field name="model">escolares.alumno</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="matricula"/>
+          <field name="apellidoPaterno"/>
+          <field name="apellidoMaterno"/>
+          <field name="name"/>
+          <field name="edad"/>
+          <field name="carrera_id"/>
+           
+        </tree>
+      </field>
+    </record>
+    
+
+    <!-- actions opening views on models -->
+    
+    <record model="ir.actions.act_window" id="escolares.action_window_alumnos">
+      <field name="name">Ventana de alumnos</field>
+      <field name="res_model">escolares.alumno</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="escolares.action_server">
+      <field name="name">Escolares server</field>
+      <field name="model_id" ref="model_escolares_escolares"/>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    
+    <menuitem name="Escolares" id="escolares.menu_root"/>
+    
+    <!-- menu categories -->
+    
+    <menuitem name="Alumnos" id="escolares.alumnos" parent="escolares.menu_root"/>
+   <!-- <menuitem name="Menu 2" id="escolares.menu_2" parent="escolares.menu_root"/>
+    -->
+    <!-- actions -->
+    
+    <menuitem name="Listado" id="escolares.alumnos_lista" parent="escolares.alumnos"
+              action="escolares.action_window_alumnos"/>
+    <!--<menuitem name="Server to list" id="escolares" parent="escolares.menu_2"
+              action="escolares.action_server"/>
+    -->
+  </data>
+</openerp>

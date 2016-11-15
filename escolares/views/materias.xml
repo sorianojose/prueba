@@ -1,0 +1,58 @@
+<openerp>
+  <data>
+    <!-- explicit list view definition -->
+    
+    <record model="ir.ui.view" id="escolares.lista_materias">
+      <field name="name">Listado</field>
+      <field name="model">escolares.materia</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="clave"/>
+          <field name="name"/>
+          <field name="creditos"/>
+        </tree>
+      </field>
+    </record>
+  
+
+    <!-- actions opening views on models -->
+    
+    <record model="ir.actions.act_window" id="escolares.action_window_materias">
+      <field name="name">Ventana de materias</field>
+      <field name="res_model">escolares.materia</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="escolares.action_server">
+      <field name="name">Escolares server</field>
+      <field name="model_id" ref="model_escolares_escolares"/>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    
+    
+    <!-- menu categories -->
+    
+    <menuitem name="Materias" id="escolares.materias" parent="escolares.menu_root"/>
+   <!-- <menuitem name="Menu 2" id="escolares.menu_2" parent="escolares.menu_root"/>
+    -->
+    <!-- actions -->
+    
+    <menuitem name="Listado" id="escolares.materias_lista" parent="escolares.materias"
+              action="escolares.action_window_materias"/>
+    <!--<menuitem name="Server to list" id="escolares" parent="escolares.menu_2"
+              action="escolares.action_server"/>
+    -->
+  </data>
+</openerp>
